@@ -1,0 +1,54 @@
+<div class="heading">
+    <div>
+        <h2 style="margin-left: 125px; margin-top: 30px;">
+            Books <span style="font-size: 14px; color: grey;">({{length}} items)</span>
+        </h2>
+    </div>
+    <!-- <div>
+        <mat-form-field style="margin-right: 87px; margin-top: 30px;">
+            <mat-label>Sort by relevance</mat-label>
+            <mat-select>
+                <div *ngFor="let item of items ; track Item">
+                    <mat-option [value]="item.value">{{item.viewValue}}</mat-option>
+                </div>
+            </mat-select>
+        </mat-form-field>
+    </div> -->
+    <div>
+        <mat-form-field style="margin-right: 87px; margin-top: 30px;">
+            <mat-label>Sort by relevance</mat-label>
+            <mat-select [(value)]="selectedSortOption">
+                <mat-option *ngFor="let item of items" [value]="item.value">{{item.viewValue}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+<div class="display">
+    <!-- <div *ngFor="let book of booksList"> -->
+    <div *ngFor="let book of sortedBooksList">
+        <div (click)="getBookDetails(book)">
+            <img src="{{book.bookImage}}" style="height: 200px; width: 200px;">
+        </div>
+        <div style="height: 200px; width: 200px;" (click)="getBookDetails(book)">
+            <mat-card>
+                <mat-card-title>{{book.bookName}}</mat-card-title>
+                <mat-card-content style="color: grey;">
+                   by {{book.authorName}}
+                </mat-card-content>
+                <mat-card-content class="bookRating">
+                    <span style="color: white;background-color: green;">
+                        {{book.bookRating}} <img src="assets/star.svg" style="background-color: green;height: 13px;">
+                    </span>
+                    <span style="color: grey;"> (20)</span>
+                </mat-card-content>
+                <mat-card-content style="font-weight: bold;">
+                Rs. {{book.bookPrice}}
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<mat-paginator style="width: 800px; height: 100px; margin-top: 50px;" [pageSize]="pageSize" [pageSizeOptions]="[6, 12, 24]" [showFirstLastButtons]="true" [length]="booksArray.length"
+    [pageIndex]="currentPage" (page)="handlePage($event)">
+</mat-paginator>

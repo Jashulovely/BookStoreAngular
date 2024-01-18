@@ -1,0 +1,26 @@
+<div>
+    <div class="forgotNavbar">
+        <img src="assets/education.svg" style="margin-left: 200px; height: 40px; margin-top: 5px;">
+        <h2 style="color: white;  margin-top: 10px; margin-left: 5px;">Bookstore</h2>
+    </div>
+    <h2>Forgot Your Password?</h2>
+    <mat-card class="forgotcard">
+        <mat-card-content style="text-align: left; margin-left: 35px;">
+            Enter your email address and we'll send <br>
+            you a link to reset your password.
+        </mat-card-content>
+        <form [formGroup]="forgotpwdForm" (ngSubmit)="onForgotpwd()">
+            <mat-form-field style="width: 290px; margin-left: 30px;" appearance="outline">
+                <mat-label>email</mat-label>
+                <input matInput placeholder="email" formControlName="email">
+                <mat-error>email is required</mat-error>
+            </mat-form-field><br>
+            <div>
+                <button mat-raised-button class="forgotResetButton">Reset Password</button>
+            </div> 
+        </form>
+    </mat-card>
+    <div class="createAccount">
+        <button mat-button (click)="redirectToRegister()" style="font-weight: bold; margin-left: 115px; margin-top: 20px;">CREATE ACCOUNT</button>
+    </div>
+</div>

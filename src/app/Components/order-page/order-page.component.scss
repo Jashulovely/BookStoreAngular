@@ -1,0 +1,23 @@
+table {
+    width: 800px;
+    border-style: double;
+    text-align: center;
+    margin-left: 260px;
+    margin-top: 40px;
+  }
+  
+  th, td {
+    border-bottom: 1px solid #ddd; /* Add horizontal lines for all cells */
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    border-right: none; /* Remove right border for header cells */
+  }
+  
+  td {
+    border-right: 1px solid #ddd; /* Add right border for data cells */
+    margin-left: 50px;
+  }
+  

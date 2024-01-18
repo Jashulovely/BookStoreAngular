@@ -1,0 +1,31 @@
+.topSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cartContent{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-top: 50px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.formFields{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+  
+  

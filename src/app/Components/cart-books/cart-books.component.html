@@ -1,0 +1,160 @@
+<h4 style="margin-left: 160px; margin-top: 20px;">
+    <button (click)="onHome()" mat-button color="primary">Home</button>
+    <span>/ My Cart</span>
+</h4>
+<mat-card style="width: 800px; margin-left: 160px;">
+    <div style="margin-left: 10px;" class="topSection">
+        <h2 style="font-weight: bold; margin-top: 16px;">
+            My Cart (1)
+        </h2>
+        <mat-card style="margin-bottom: 40px; margin-right: 20px; width: 250px;">
+            <span><img src="assets/location.svg"> Use Current Location <img style="margin-left: 60px;" src="assets/arrow_drop_down.svg"></span>
+        </mat-card>
+    </div>
+</mat-card>
+
+<div style="margin-top: 20px; width: 830px; margin-left: 160px;">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title style="font-weight: bold;">
+                    Books In Cart<span style="color: grey;">({{length}})</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let book of booksArray">
+                <div class="cartContent">
+                    <div>
+                        <img src="{{book.bookImage}}" style="height: 150px; width: 150px; margin-top: 3px;">
+                    </div>
+                    <div style="margin-left: 40px;">
+                        <h4 style="font-weight: bold;">{{book.bookName}}</h4>
+                        <p style="color: grey;">by {{book.authorName}}</p>
+                        <h4 style="font-weight: bold;">Rs. {{book.bookPrice}}</h4>
+                            
+                        <button mat-icon-button (click)="decrementQuantity(book)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                        <input [value]="book.bookQuantity" disabled style="width: 40px; text-align: center;">
+                        <button mat-icon-button (click)="incrementQuantity(book)">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <span style="font-weight: '500'; margin-left: 10px;">
+                            <button mat-stroked-button color="warn" (click)="onRemoveCartBook(book)">Remove</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        <button mat-raised-button color="primary" (click)="goToOrder(booksArray)" style="margin-left: 640px; margin-top: 10px;">ADD TO ORDERS</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+<div style="margin-top: 20px; width: 830px; margin-left: 160px;">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="onPanelOpened()" (closed)="onPanelClosed()">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="font-weight: bold;">
+                    {{ panelTitle }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div>
+                <button mat-stroked-button style="color: #A03037; border-color: #A03037; margin-left: 600px;">Add New Address</button>
+            </div>
+            <form [formGroup]="addressForm" (ngSubmit)="onAddress()">
+                <div style="margin-top: 20px;">
+                    <div class="container">
+                        <div class="formFields">
+                            <span>Full Name</span>
+                            <mat-form-field appearance="outline" style="width: 260px;">
+                                <mat-label>enter your name</mat-label>
+                                <input matInput formControlName="fullName">
+                                <mat-error>
+                                    email is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="formFields" style="margin-left: 30px;">
+                            <span>Mobile Number</span>
+                            <mat-form-field appearance="outline" style="width: 260px;">
+                                <mat-label>enter your phone number</mat-label>
+                                <input matInput formControlName="mobNo">
+                                <mat-error>
+                                    phone number is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="formFields">
+                        <span>Address</span>
+                        <mat-form-field appearance="outline" style="width: 550px;">
+                            <mat-label>enter your address</mat-label>
+                            <input matInput formControlName="address">
+                            <mat-error>
+                                address is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="container">
+                        <div class="formFields">
+                            <span>City/Town</span>
+                            <mat-form-field appearance="outline" style="width: 260px;">
+                                <mat-label>enter your city</mat-label>
+                                <input matInput formControlName="city">
+                                <mat-error>
+                                    city is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="formFields" style="margin-left: 30px;">
+                            <span>State</span>
+                            <mat-form-field appearance="outline" style="width: 260px;">
+                                <mat-label>enter your state</mat-label>
+                                <input matInput formControlName="state">
+                                <mat-error>
+                                    state is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="formFields">
+                        <span>Type</span>
+                        <mat-radio-group aria-label="Select an option" style="margin-top: 10px;">
+                            <mat-radio-button value="1">Home</mat-radio-button>
+                            <mat-radio-button style="margin-left: 160px;" value="2">Work</mat-radio-button>
+                            <mat-radio-button style="margin-left: 160px;" value="2">Other</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <button mat-raised-button color="primary" style="margin-left: 630px; margin-top: 10px;">CONTINUE</button>
+                </div>
+            </form>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+<div *ngIf="visible" style="margin-top: 20px; width: 830px; margin-left: 160px;">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title style="font-weight: bold;">
+                    Order Summary <span style="color: grey;">({{length}})</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let cartBook of cartItems">
+                <div class="cartContent">
+                    <div>
+                        <img src="{{cartBook.bookImage}}" style="height: 150px; width: 150px; margin-top: 3px;">
+                    </div>
+                    <div style="margin-left: 40px;">
+                        <h4 style="font-weight: bold;">{{cartBook.bookName}}</h4>
+                        <p style="color: grey;">by {{cartBook.authorName}}</p>
+                        <h4 style="font-weight: bold;">Rs. {{cartBook.bookPrice * cartBook.bookQuantity}}</h4>
+                    </div>
+                </div>
+            </div>
+        <button mat-raised-button color="primary" style="margin-left: 640px; margin-top: 10px;" (click)="goToPlaceOrder()">PLACE ORDER</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+
+

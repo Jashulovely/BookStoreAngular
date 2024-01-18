@@ -1,0 +1,27 @@
+.getBook{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.imageButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.styledLine{
+    border: 2px; 
+    height: 2px; 
+    background-color: grey; 
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.example-full-width {
+width: 100%;
+}
+

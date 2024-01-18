@@ -1,0 +1,10 @@
+<div class="dashboardNavbar">
+    <img src="assets/education.svg" style="margin-left: 160px; height: 40px; margin-top: 5px;">
+    <h2 style="color: #ffffff;  margin-top: 10px; margin-left: 5px;">Bookstore</h2>
+    <input type="search" class="search" placeholder="Search...">
+    <button  style="margin-left: 150px;" mat-stroked-button><img src="assets/person_svg.svg" class="image"></button>
+    <button mat-stroked-button (click)="goToCart()">
+        <img src="assets/shopping_cart_svg.svg" class="image" ><!--<span>{{length}}</span>-->
+    </button>
+</div>
+<router-outlet></router-outlet>

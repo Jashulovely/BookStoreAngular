@@ -1,0 +1,61 @@
+<h4>
+    <span style="color: grey;">Home / </span>
+    <span>Book(01)</span>
+</h4>
+<div class="getBook">
+    <mat-card>
+        <div>
+            <img src="{{bookImage}}" style="height: 400px; width: 400px;"><br><br>
+            <div class="imageButtons">
+                <button type="submit" (click)="openSnackBar()" mat-raised-button style="background: #A03037;color:#fff;width: 180px; ">
+                    ADD TO CART
+                </button>
+                <button type="submit" mat-flat-button style="background: skyblue;color:#fff;width: 180px;">
+                    <img src="assets/favorite.svg">
+                    <span style="margin-left: 10px;">
+                        WISHLIST
+                    </span>
+                </button>
+            </div>
+        </div>
+    </mat-card>
+    <div style="height: 200px; width: 500px; margin-left: 50px;">
+        <h1 style="font-weight: bold;">{{bookName}}</h1>
+        <h3 style="color: grey;">
+        by {{authorName}}
+        </h3>
+        <div class="bookRating">
+            <span style="color: white;background-color: green;">
+                {{bookRating}} <img src="assets/star.svg" style="background-color: green;height: 13px;">
+            </span>
+            <span style="color: grey;"> (20)</span>
+        </div><br>
+        <h1 style="font-weight: bold;">
+        Rs. {{bookPrice}}
+        </h1>
+        <hr class="styledLine"><br>
+        <li style="color: grey;">Book Detail</li><br>
+        <p style="margin-left: 20px;">{{bookDetails}}</p><br>
+        <hr class="styledLine"><br>
+        <h1 style="font-weight: bold;">Customer Feedback</h1>
+        <form class="example-form">
+            <div class="form-group" style="background-color: #F5F5F5;">
+                <label for="feedback" style="font-weight: bold;  margin-left: 20px;">Overall Rating</label><br>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                    <img src="assets/star_rating.svg">
+                    <img src="assets/star_rating.svg" style="margin-left: 5px;">
+                    <img src="assets/star_rating.svg" style="margin-left: 5px;">
+                    <img src="assets/star_rating.svg" style="margin-left: 5px;">
+                    <img src="assets/star_rating.svg" style="margin-left: 5px;">
+                </div>
+                <mat-card style="margin: 20px;">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Leave a comment</mat-label>
+                        <textarea matInput style="color: #707070; width: 300px;" placeholder="Write your review"></textarea>
+                    </mat-form-field>
+                </mat-card>
+                <button mat-raised-button color="primary" style="margin-left: 380px;">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
